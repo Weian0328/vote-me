@@ -1,5 +1,3 @@
-<%= flash[:notice] %>
-
 <h1>Hi</h1>
 
 <%= link_to 'Add Candidate', new_candidate_path %>
@@ -7,6 +5,8 @@
 
 <table>
     <tr>
+        <td></td>
+        <td>Votes</td>
         <td>Name</td>
         <td>Party</td>
         <td>Age</td>
@@ -15,6 +15,8 @@
 
     <% @candidates.each do |candidate| %>
     <tr>
+        <td><%= link_to 'vote',  vote_candidate_path(candidate.id), method: "post" %></td>
+        <td><%= candidate.vote_logs.size %></td>
         <td><%= link_to candidate.name, candidate_path(candidate.id) %></td>
         <td><%= candidate.party %></td>
         <td><%= candidate.age %></td>
